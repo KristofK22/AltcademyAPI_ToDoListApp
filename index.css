@@ -1,0 +1,267 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+}
+
+body {
+  min-height: 100vh;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #000000;
+  color:#fff;
+  font-family: 'Helvetica Neue 700', sans-serif;
+}
+
+/* Navbar */
+
+.Navbar {
+  display: grid;
+  overflow-x: hidden; 
+  font-family: 'Helvetica Neue 700', sans-serif;
+  background-color: #000000;
+  color: #fff;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+@keyframes FadeInTitle {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.Hero_Title {
+  background-color: #000000;
+  color:#f7f7f7;
+  animation: FadeInTitle 7s cubic-bezier(.53,.54,0,1);
+  animation-iteration-count: 1;
+}
+
+.Top_Divider_Logo {
+  height: 2px;
+  width: 725px;
+  background-color: #029680bf;
+  border-radius: 90%;
+  transition: all .33s ease-in-out;
+}
+
+header:hover .Top_Divider_Logo {
+  background-color:  #00f5d0;
+  box-shadow: 0px 0px 5px 3px #00907b;
+}
+
+@keyframes FadeInNav {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.FadeInNav {
+  animation: FadeInNav 7s cubic-bezier(.53,.54,0,1);
+  animation-iteration-count: 1;
+}
+
+/* Main */ 
+
+#DateTime {
+  display: inline-block;
+  min-width: 327px;
+  color: #00907b;
+  text-shadow: 0 0 18px #60fae3;
+  transition: all .11s ease-in-out;
+}
+
+#DateTime:hover {
+  text-shadow: 0 0 2px #7ffae8;
+}
+
+#InputTask {
+  font-weight: bold;
+  border: -1px;
+  border-color: #00907b;
+  border-radius: 3px;
+  box-shadow: 0px 0px 0px 1px #00f5d0;
+  transition: all .11s ease-in-out;
+}
+
+#InputTask:focus-visible {
+  outline: none;
+  background-color: #7ffae8;
+  box-shadow: 0px 0px 2px 3px #00f5d0;
+}
+
+#InputDueDate {
+  font-weight: bold;
+  border: -1px;
+  border-color: #00907b;
+  border-radius: 3px;
+  box-shadow: 0px 0px 0px 1px #00f5d0;
+  transition: all .11s ease-in-out;
+}
+
+#InputDueDate:focus-visible {
+  outline: none;
+  background-color: #7ffae8;
+  box-shadow: 0px 0px 2px 3px #00f5d0;
+}
+
+#SubmitBtn {
+  font-weight: bolder;
+  background-color: #00907b;
+  border: 2px solid #00f5d0;
+  border-radius: 5px;
+  transition: all .11s ease-in-out;
+}
+
+#SubmitBtn:hover {
+  box-shadow: 0 0 3px 2px #00f5d0;
+}
+
+#ToDoList {
+  font-weight: bolder;
+}
+
+.task {
+  border: 1px;
+  border-radius: 3px;
+  border-color: transparent;
+  transition: all .11s ease-in-out;
+}
+
+.task:hover {
+  box-shadow: 0 0 3px 2px #a7faee;
+}
+
+#NoTasks {
+  display: none;
+}
+
+#CompleteBtn {
+  display: none;
+  font-weight: bolder;
+  background-color: #00907b;
+  border: 2px solid #00f5d0;
+  border-radius: 5px;
+  transition: all .11s ease-in-out;
+}
+
+#CompleteBtn:hover {
+  box-shadow: 0 0 3px 2px #7ffae8;
+}
+
+#RemoveBtn {
+  font-weight: bolder;
+  background-color: #901800;
+  border: 2px solid #f52d00;
+  border-radius: 5px;
+  transition: all .11s ease-in-out;
+}
+
+#RemoveBtn:hover {
+  box-shadow: 0 0 3px 2px #f52d00;
+}
+
+#TaskCounter {
+  font-weight: bold;
+  color: #00907b;
+  text-shadow: 0 0 9px #60fae3;
+}
+
+.BottomButtons {
+  margin-right: 5px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+
+#AllBtn {
+  background-color: #00907b;
+  border: 2px solid #00f5d0;
+  transition: all .11s ease-in-out;
+}
+
+#AllBtn:hover {
+  box-shadow: 0 0 3px 2px #00f5d0;
+}
+
+#ActiveBtn {
+  background-color: #f5dd00;
+  border: 2px solid #eef536;
+  transition: all .11s ease-in-out;
+}
+
+#ActiveBtn:hover {
+  box-shadow: 0 0 3px 2px #eef536;
+}
+
+#CmpltdBtn {
+  background-color: #007c2d;
+  border: 2px solid #3eff85;
+  transition: all .11s ease-in-out;
+}
+
+#CmpltdBtn:hover {
+  box-shadow: 0 0 3px 2px #3eff85;
+}
+
+/* Footer */
+
+footer {
+  max-width: 1920px;
+  overflow-x: hidden; 
+  color: #767676;
+}
+
+#Footer {
+  width: 1920px;
+}
+
+footer:hover, footer:hover a {
+  color: #ffffff;
+}
+
+footer:hover svg {
+  color: #ffffff;
+}
+
+footer a {
+  color: #767676;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #01ecc9ac;
+}
+
+@media (min-width:1444.95px) {
+
+  #Contact1445Align {
+  text-align: end !important;
+  padding-right: 115px;
+  }
+
+  #ContactIcons1445Align {
+    justify-content: end !important;
+  }
+  
+}
+
+.Altcademy {
+  transition: 0.3s all ease-in-out;
+}
+
+.Altcademy:hover svg, 
+.Altcademy:active svg {
+  filter: drop-shadow(0 0 5px #1647fb);
+}
+
+.list-inline-item svg {
+  border-radius: 10px;
+  transition: all .15s ease-in-out;
+}
+
+.list-inline-item svg:hover {
+  color: #01ecc9ac;
+  transform: scale(1.05);
+}
