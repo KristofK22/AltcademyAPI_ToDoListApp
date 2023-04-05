@@ -65,7 +65,7 @@ header:hover .Top_Divider_Logo {
 
 /* Main */ 
 
-#DateTime {
+#LiveDateTime {
   display: inline-block;
   min-width: 327px;
   color: #00907b;
@@ -73,7 +73,7 @@ header:hover .Top_Divider_Logo {
   transition: all .11s ease-in-out;
 }
 
-#DateTime:hover {
+#LiveDateTime:hover {
   text-shadow: 0 0 2px #7ffae8;
 }
 
@@ -92,7 +92,7 @@ header:hover .Top_Divider_Logo {
   box-shadow: 0px 0px 2px 3px #00f5d0;
 }
 
-#InputDueDate {
+#DateTime {
   font-weight: bold;
   border: -1px;
   border-color: #00907b;
@@ -101,7 +101,7 @@ header:hover .Top_Divider_Logo {
   transition: all .11s ease-in-out;
 }
 
-#InputDueDate:focus-visible {
+#DateTime:focus-visible {
   outline: none;
   background-color: #7ffae8;
   box-shadow: 0px 0px 2px 3px #00f5d0;

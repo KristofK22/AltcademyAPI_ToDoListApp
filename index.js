@@ -2,14 +2,16 @@
 $(document).ready(function () {
 
   // Variable(s) =============================================
-    var livedateTime;
-    var inputTaskStat = false;
-    var inputDueDateStat = false;
+    var currDateTime;
     var noTasksMsg = $('#NoTasks');
     var taskCount;
+    // input Status(s)
+    var inputTaskStat = false;
+    var inputDueDateStat = false;
+    
   
   // Selector(s) =============================================
-    var dateTime = $('#DateTime');
+    var liveDateTime = $('#LiveDateTime');
 
   // jQuery AJAX 'GET' JSON and update #ToDoList =============
     $.ajax({
@@ -211,23 +213,23 @@ $(document).ready(function () {
     };
 
     // Live date and time
-    var liveDateTime = () => {
+    var liveDT = () => {
 
-      dateTime.html(Date($.now()).slice(0,24)).hide().fadeIn(1777, "swing");
+      liveDateTime.html(Date($.now()).slice(0,24)).hide().fadeIn(1777, "swing");
 
       setTimeout (() => {
 
         setInterval(() => {
 
-        dateTime.html(Date($.now()).slice(0,24));
-        livedateTime = Date($.now()).slice(0,24);
+        liveDateTime.html(Date($.now()).slice(0,24));
+        currDateTime = Date($.now()).slice(0,24);
 
         }, 995);
 
       }, 1777);
 
     };
-    liveDateTime();
+    liveDT();
  
   // Event Listeners ============================================
     $(document).on('input', '#InputTask', function() {
@@ -240,13 +242,17 @@ $(document).ready(function () {
 
     });
 
-    $(document).on('input', '#InputDueDate', function() {
-
-      if ($('#InputDueDate').val().length === 21) {
+    $(document).on('change', '#DateTime', function() {
+      
+      if (this) {
 
         inputDueDateStat = true;
 
-      } else {inputDueDateStat = false;};
+      } else {
+
+        inputDueDateStat = false;
+
+      };
 
     });
 
@@ -269,7 +275,7 @@ $(document).ready(function () {
             task: {
 
               content: contentTask,
-              due: $('#InputDueDate').val()
+              due: $('#DateTime').val()
 
             }
 
@@ -313,6 +319,7 @@ $(document).ready(function () {
               console.log(response); // response is a parsed JavaScript object instead of raw JSON
 
               var json = response;
+              var index = 0;
 
               if (json.Error) {
 
@@ -330,8 +337,25 @@ $(document).ready(function () {
 
               } else {
 
+                // find and match json 'content' to input 'content'
+                for (i = 0; i < json.tasks.length; i++) {
+
+                  var jsonContent = json.tasks[i].content;
+
+                    if (contentTask === jsonContent) {
+
+                      index = i;
+                      break;
+
+                    } else {
+                      
+                      continue;
+
+                    };
+
+                };
+
                 // variables
-                var index = ((json.tasks.length) - 1);
                 var parent = $('#ToDoList').children('.task')[0];
                 var content = json.tasks[index].content;
                 var completedStatus = json.tasks[index].completed;
@@ -352,19 +376,14 @@ $(document).ready(function () {
                   // add 'dueBy' to '#DueBy'
                   $('#DueBy').html(dueBy);
 
-                  if (completedStatus === false) {
-
-                    $('#CompleteBtn').css("display", "inline-block");
-
-                  } else if (completedStatus === true) {
-
-                    // add time to '#CompletedDateTime'
-                    $('#CompletedDateTime').html((cmpltdDandT));
-
-                  } else {};
-
                 };
                 addTo();
+
+                if (completedStatus === false) {
+
+                  $('#CompleteBtn').css("display", "inline-block");
+
+                } else {};
 
               };
 
@@ -387,11 +406,11 @@ $(document).ready(function () {
 
         if (inputDueDateStat === false && inputTaskStat === false) {
 
-          alert("Both Task and Due Date must be completed precisely!\nIf both formats are correct: delete and a character.");
+          alert("Both Task and Due Date/Time must be completed!\nIf both are correct: delete and a character in task field and/or change to and from different date/time.");
 
         } else if (inputDueDateStat === false) {
 
-          alert("Due Date/Time must be in exact format: 'Sun March 24 09:00:00'!\nIf format is correct: Delete and a character.");
+          alert("Due Date/Time must be completed!\nIf completed, change to and from a different date/time.");
 
         } else if (inputTaskStat === false) {
 
