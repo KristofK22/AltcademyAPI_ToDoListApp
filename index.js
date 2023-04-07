@@ -568,11 +568,89 @@ $(document).ready(function () {
 
     });
     
-    /*$(document).on('click', '#ActiveBtn', function () {
+    $(document).on('click', '#ActiveBtn', function () {
 
+      if ($(noTasksMsg).show()) {
 
+        $(noTasksMsg).hide();
+ 
+      } else {};
 
-    });*/
+      for (i = 0; i <= $('.task').length; i++) {
+
+        $('#ToDoList').children().eq(i).hide();
+        continue;
+
+      };
+
+      $.ajax({
+
+        type: 'GET',
+      
+        url: 'https://fewd-todolist-api.onrender.com/tasks?api_key=139',
+      
+        dataType: 'json',
+      
+        success: function (response, textStatus) {
+      
+          console.log(response); // response is a parsed JavaScript object instead of raw JSON
+          var json = response;
+
+          if (json.Error) {
+
+            console.log("json.Error");
+            var errorMsg = () => {
+  
+              var msg = $('<div class="row"> \
+                              <h1>JSON Error...</h1> \
+                              </div>').hide().fadeIn(700, "swing");
+  
+              $('#ToDoList').prepend(msg);
+  
+            };
+            errorMsg();
+  
+          } else {
+
+            var idsCount = [];
+
+            for (i = 0; i < json.tasks.length; i++) {
+
+              var completedStatus = json.tasks[i].completed;
+              var jsonID = json.tasks[i].id;
+
+              if (completedStatus === false) {
+
+                idsCount.push(jsonID);
+                $('#'+jsonID+'').show();
+
+              } else {continue;};
+
+            };
+
+            if (idsCount.length === 0) {
+
+              console.log("No 'Completed' tasks...");
+              $(noTasksMsg).fadeIn(700);
+
+            } else {};
+
+            // update task counter
+            $('#TaskCounter').html(idsCount.length);
+
+          };
+        
+        },
+      
+        error: function (request, textStatus, errorMessage) {
+      
+          console.log(errorMessage);
+      
+        }
+
+      });
+
+    });
 
     $(document).on('click', '#CmpltdBtn', function () {
 
